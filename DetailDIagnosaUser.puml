@@ -1,0 +1,16 @@
+@startuml
+actor pasien
+activate pasien
+pasien->MenuRiwayatDiagnosa:1.pasien memiilih menu riwayat diagnosa
+activate MenuRiwayatDiagnosa
+MenuRiwayatDiagnosa->RiwayatDiagnosaController:1.1:lihat detail diagnosa
+activate RiwayatDiagnosaController
+RiwayatDiagnosaController->DataDiagnosa: 1.1.1:Query detail diagnosa
+activate DataDiagnosa
+DataDiagnosa->DataDiagnosa:1.1.1.1 show()
+deactivate MenuRiwayatDiagnosa
+deactivate RiwayatDiagnosaController
+DataDiagnosa->pasien:1.1.1.2 tampilkan detail riwayat diagnosa
+
+
+@enduml

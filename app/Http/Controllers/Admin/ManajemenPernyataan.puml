@@ -1,0 +1,27 @@
+@startuml
+actor administrator
+activate administrator
+administrator->MenuDataPernyataan:1.memilih menu data pernyataan
+activate MenuDataPernyataan
+MenuDataPernyataan->FormDataPernyataan:1.1:input data pernyataan
+activate FormDataPernyataan
+FormDataPernyataan->PernyataanController:1.1.1:Query tambah pernyataan
+activate PernyataanController
+PernyataanController->DataPernyataan:1.1.1.1:tambah pernyataan
+activate DataPernyataan
+DataPernyataan->DataPernyataan:1.1.1.1.1:store data pernyataan
+deactivate FormDataPernyataan
+deactivate PernyataanController
+DataPernyataan->MenuDataPernyataan:1.1.1.1.2:Data pernyataan berhasil ditambahkan
+
+MenuDataPernyataan->FormDataPernyataan:2.1: Edit data pernyataan
+activate FormDataPernyataan
+FormDataPernyataan->PernyataanController:2.1.1:Query update data pernyataan
+activate PernyataanController
+PernyataanController->DataPernyataan:2.1.1.1:Update Data PernyataanController
+DataPernyataan->DataPernyataan:2.1.1.1.1:Update()
+deactivate FormDataPernyataan
+deactivate PernyataanController
+DataPernyataan->MenuDataPernyataan:2.1.1.1.2:Pernyataan berhasil diupdate
+
+@enduml

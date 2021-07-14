@@ -1,0 +1,20 @@
+@startuml
+actor administrator
+activate administrator
+administrator->formLogin:1.input email dan password
+activate formLogin
+formLogin->LoginController:2.proses()
+activate LoginController
+LoginController->datapengguna:3.cek login()
+activate datapengguna
+deactivate LoginController
+datapengguna->datapengguna:4.validasi data pengguna
+datapengguna->formLogin:5.email dan password salah
+activate LoginController
+datapengguna->LoginController:6.email dan password benar
+deactivate datapengguna
+LoginController->halamandashboard:7.menampilkan halaman dashboard
+deactivate LoginController
+
+
+@enduml

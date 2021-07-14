@@ -1,0 +1,38 @@
+@startuml
+actor administrator
+activate administrator
+administrator->MenuDataPengguna:1:memilih menu data pengguna
+activate MenuDataPengguna
+activate formDataPengguna
+MenuDataPengguna->formDataPengguna:1.1:tambah data pengguna
+activate UserController
+formDataPengguna->UserController:1.1.1:query data pengguna
+UserController->datapengguna:1.1.1.1:tambah data pengguna
+activate datapengguna
+deactivate formDataPengguna
+deactivate UserController
+datapengguna->datapengguna:1.1.1.1.1:store data()
+datapengguna->MenuDataPengguna:1.1.1.1.2:data pengguna berhasil ditambahkan
+
+MenuDataPengguna->formDataPengguna:2.1: Edit Data Pengguna
+activate formDataPengguna
+formDataPengguna->UserController:2.1:query update data pengguna
+activate UserController
+UserController->datapengguna:2.1.1:update data pengguna
+datapengguna->datapengguna:2.1.1.1:update()
+deactivate UserController
+deactivate formDataPengguna
+
+datapengguna->MenuDataPengguna:data pengguna berhasil diupdate
+MenuDataPengguna->UserController:3.1:query hapus data pengguna
+activate UserController
+UserController->datapengguna:3.1.1:hapus data pengguna
+datapengguna->MenuDataPengguna:3.1.1.1:data pengguna berhasil dihapus
+deactivate UserController
+datapengguna->datapengguna:3.1.1.1: Destroy()
+MenuDataPengguna->UserController:4.1:query aktifasi pengguna
+activate UserController
+UserController->datapengguna:4.1.1:aktifasi data pengguna
+datapengguna->MenuDataPengguna:4.1.1.1:Data pengguna berhasil diaktifasi
+datapengguna->datapengguna:aktifasipengguna()
+@enduml

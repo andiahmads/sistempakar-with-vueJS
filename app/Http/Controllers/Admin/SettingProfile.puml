@@ -1,0 +1,18 @@
+@startuml
+actor administrator
+actor pasien
+activate administrator
+activate pasien
+administrator->MenuSettingProfile:1.Memilih menu setting profile
+activate MenuSettingProfile
+MenuSettingProfile->FormEditProfile:1.1:edit profile
+activate FormEditProfile
+FormEditProfile->SettingProfileController:1.1.1:Query update profile
+activate SettingProfileController
+SettingProfileController->DataPengguna:1.1.1.1:Update profile
+activate DataPengguna
+DataPengguna->DataPengguna:1.1.1.1.1:UpdateProfile()
+deactivate SettingProfileController
+deactivate FormEditProfile
+DataPengguna->MenuSettingProfile:1.1.1.1.2:Profile berhasil diupdate
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+actor administrator
+activate administrator
+administrator->MenuDataRiwayatDiagnosa:1.memilih menu data riwayat diagnosa
+activate MenuDataRiwayatDiagnosa
+MenuDataRiwayatDiagnosa->RiwayatDiagnosaController:1.1:Lihat detail diagnosa user
+activate RiwayatDiagnosaController
+RiwayatDiagnosaController->DataDiagnosa:1.1.1:Query detail diagnosa user
+activate DataDiagnosa
+DataDiagnosa->DataDiagnosa:showDetail()
+deactivate RiwayatDiagnosaController
+deactivate MenuDataRiwayatDiagnosa
+DataDiagnosa->administrator:1.1.1.1:Tampilkan detail riwayat diagnosa user
+MenuDataRiwayatDiagnosa->RiwayatDiagnosaController:2.1:hapus data riwayat diagnosa user
+activate MenuDataRiwayatDiagnosa
+activate RiwayatDiagnosaController
+RiwayatDiagnosaController->DataDiagnosa:2.1.1:Query hapus riwayat diagnosa user
+
+DataDiagnosa->DataDiagnosa:Destroy()
+deactivate RiwayatDiagnosaController
+DataDiagnosa->MenuDataRiwayatDiagnosa:2.1.1.1:Data riwayat diagnosa berhasil dihapus
+@enduml

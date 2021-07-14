@@ -1,0 +1,33 @@
+@startuml
+actor administrator
+activate administrator
+administrator->MenuDataGejala:1:pilih menu data gejala
+activate MenuDataGejala
+MenuDataGejala->FormDataGejala:1.1:input data gejala
+activate FormDataGejala
+FormDataGejala->GejalaController:1.1.1:Query data gejala
+activate GejalaController
+GejalaController->DataGejala:1.1.1.1:tambah data gejala
+activate DataGejala
+DataGejala->DataGejala:1.1.1.1.1:Store data gejala()
+deactivate GejalaController
+deactivate FormDataGejala
+DataGejala->MenuDataGejala:1.1.1.1.2: Data Gejala berhasil ditambahkan
+MenuDataGejala->FormDataGejala:2.1:edit data gejala
+activate FormDataGejala
+FormDataGejala->GejalaController:2.1.1: Query Data gejala
+activate GejalaController
+GejalaController->DataGejala:2.1.1.1: update data gejala
+DataGejala->DataGejala:2.1.1.1.1:update data gejala()
+deactivate GejalaController
+deactivate FormDataGejala
+DataGejala->MenuDataGejala:2.1.1.1.2: Data gejala berhasil diupdate
+
+MenuDataGejala->GejalaController:3.1: Query Data gejala
+activate GejalaController
+GejalaController->DataGejala: 3.1.1: Hapus data Gejala
+DataGejala->DataGejala: 3.1.1.1: Destroy data Gejala()
+deactivate GejalaController
+DataGejala->MenuDataGejala:3.1.1.2: Data gejala berhasil Dihapus
+@enduml
+

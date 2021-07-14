@@ -1,0 +1,20 @@
+@startuml
+actor administrator
+activate administrator
+administrator->MenuDataPersetujuanDiagnosa:1.memilih menu persetujuna diagnosa
+activate MenuDataPersetujuanDiagnosa
+MenuDataPersetujuanDiagnosa->PersetujuanDiagnosaController:1.1:Query update status persetujuan diagnosa
+activate PersetujuanDiagnosaController
+PersetujuanDiagnosaController->dataPersetujuanDiagnosa:1.1.1:update persetujuan diagnosa
+activate dataPersetujuanDiagnosa
+dataPersetujuanDiagnosa->dataPersetujuanDiagnosa:1.1.1.1:updatePersetujuna()
+deactivate PersetujuanDiagnosaController
+dataPersetujuanDiagnosa->MenuDataPersetujuanDiagnosa:1.1.1.2:data persetujuan berhasil diupdate
+MenuDataPersetujuanDiagnosa->PersetujuanDiagnosaController:2.1:Query hapus data persetujuan
+activate PersetujuanDiagnosaController
+PersetujuanDiagnosaController->dataPersetujuanDiagnosa:2.1.1: hapus data persetujuan diagnosa
+dataPersetujuanDiagnosa->dataPersetujuanDiagnosa:2.1.1.1:hapus()
+deactivate PersetujuanDiagnosaController
+
+dataPersetujuanDiagnosa->MenuDataPersetujuanDiagnosa:2.1.1.2:data persetujuan diagnosa berhasil dihapus
+@enduml

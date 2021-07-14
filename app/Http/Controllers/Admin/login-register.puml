@@ -1,0 +1,29 @@
+@startuml
+actor pasien
+activate pasien
+pasien->FormRegister : 1.tampilkan form register()
+activate FormRegister
+pasien->FormRegister : 2. inputkan Email, Password, Jenis Kelamin
+deactivate FormRegister
+FormRegister->LoginController : 3. Store data
+activate LoginController
+LoginController->DataPengguna :4 Registrasi Akun()
+deactivate LoginController
+activate DataPengguna
+DataPengguna->DataPengguna : 5. Store Data
+DataPengguna->FormLogin : 6. Registrasi Pengguna Success
+
+pasien->FormLogin : 7. input Email dan Password
+activate FormLogin
+FormLogin->LoginController : 8.Store data
+activate LoginController
+LoginController->DataPengguna : 9. CekLogin()
+DataPengguna->DataPengguna : 10. validasi Email Dan Password
+DataPengguna->DashboardPengguna : 11. Email Dan Password Valid
+deactivate FormLogin
+
+deactivate pasien
+
+
+
+@enduml

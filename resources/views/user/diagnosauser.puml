@@ -1,0 +1,16 @@
+@startuml
+actor pasien
+activate pasien
+pasien->MenuDiagnosa: 1.User memilih menu diagnosa
+activate MenuDiagnosa
+MenuDiagnosa->FormPernyataan:1.1:Menginput persentase keyakinan
+activate FormPernyataan
+FormPernyataan->DiagnosaController: 1.1.1:Query Diagnosa
+activate DiagnosaController
+DiagnosaController->DataDiagnosa:1.1.1.1:tambah data diagnosa
+activate DataDiagnosa
+DataDiagnosa->DataDiagnosa:1.1.1.1.1:Store()
+deactivate DiagnosaController
+deactivate FormPernyataan
+DataDiagnosa->MenuDiagnosa:1.1.1.1.2:Diagnosa berhasil
+@enduml

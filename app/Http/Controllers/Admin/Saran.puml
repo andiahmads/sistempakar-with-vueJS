@@ -1,0 +1,31 @@
+@startuml
+actor administrator
+activate administrator
+administrator->MenuDataSaran:1.pilih menu data saran
+activate MenuDataSaran
+MenuDataSaran->FormDataSaran:1.1:input data saran
+activate FormDataSaran
+FormDataSaran->SaranController:1.1.1:Query tambah saran
+activate SaranController
+SaranController->DataSaran:1.1.1.1:Tambah data saran
+activate DataSaran
+DataSaran->DataSaran:1.1.1.1.1:Store()
+deactivate SaranController
+deactivate FormDataSaran
+DataSaran->MenuDataSaran:1.1.1.1.2:data saran barhasil ditambahkan
+MenuDataSaran->FormDataSaran:2.1:Edit data saran
+activate FormDataSaran
+FormDataSaran->SaranController:2.1.1:Query update data saran
+activate SaranController
+SaranController->DataSaran:2.1.1.1:Update data saran
+DataSaran->DataSaran:2.1.1.1.1: Update()
+deactivate SaranController
+deactivate FormDataSaran
+DataSaran->MenuDataSaran:2.1.1.1.2: Data saran berhasil di update
+MenuDataSaran->SaranController:3.1:Query Hapus data saran
+activate SaranController
+SaranController->DataSaran:3.1.1:Hapus data saran
+DataSaran->DataSaran:3.1.1.1:Destroy()
+DataSaran->MenuDataSaran:3.1.1.2:Data saran Berhasil Dihapus
+
+@enduml

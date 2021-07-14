@@ -1,0 +1,33 @@
+@startuml
+actor administrator
+activate administrator
+administrator->MenuDataRule:1:pilih menu data rule
+activate MenuDataRule
+MenuDataRule->FormDataRule:1.1:input data rule
+activate FormDataRule
+FormDataRule->RuleController:1.1.1:Query data rule
+activate RuleController
+RuleController->DataRule:1.1.1.1:tambah data rule
+activate DataRule
+DataRule->DataRule:1.1.1.1.1:Store data rule()
+deactivate RuleController
+deactivate FormDataRule
+DataRule->MenuDataRule:1.1.1.1.2: Data Rule berhasil ditambahkan
+MenuDataRule->FormDataRule:2.1:edit data rule
+activate FormDataRule
+FormDataRule->RuleController:2.1.1: Query Data rule
+activate RuleController
+RuleController->DataRule:2.1.1.1: update data rule
+DataRule->DataRule:2.1.1.1.1:update data rule()
+deactivate RuleController
+deactivate FormDataRule
+DataRule->MenuDataRule:2.1.1.1.2: Data rule berhasil diupdate
+
+MenuDataRule->RuleController:3.1: Query Data rule
+activate RuleController
+RuleController->DataRule: 3.1.1: Hapus data Rule
+DataRule->DataRule: 3.1.1.1: Destroy data Rule()
+deactivate RuleController
+DataRule->MenuDataRule:3.1.1.2: Data rule berhasil Dihapus
+@enduml
+
