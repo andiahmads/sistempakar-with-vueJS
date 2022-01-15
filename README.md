@@ -1,4 +1,3 @@
-# sistempakar-with-vueJS
-# run php artisan migrate
-# next run php db:seed
-# next run npm run watch
+# expert system final project 
+$ expert system for diagnosing narcissistic personality disorder using a fuzzy decision tree algorithm with ID3
+$ using laravel and VUE
